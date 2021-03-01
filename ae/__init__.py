@@ -28,13 +28,17 @@ class AutomaticExtract:
         remove_noise_node(element, noise_node_list)
         author = AuthorExtract().extractor(element, author_xpath=author_xpath)
         source = SourceExtract().extractor(element, source_xpath=source_xpath)
+        time_extract = TimeExtract()
+        publish_time_bak = time_extract.extractor(element, element, publish_time_xpath=publish_time_xpath)
         content = ContentExtract().extract(element,
                                            host=host,
                                            with_body_html=with_body_html,
                                            body_xpath=body_xpath)
         content_element = content[0][1]['node']
         title = TitleExtract().extract(content, content_element, element, title_xpath=title_xpath)
-        publish_time = TimeExtract().extractor(content_element, element, publish_time_xpath=publish_time_xpath)
+        publish_time = time_extract.extractor(content_element, element, publish_time_xpath=publish_time_xpath)
+        if not publish_time:
+            publish_time = publish_time_bak
 
         result = {'title': title,
                   'author': author,
