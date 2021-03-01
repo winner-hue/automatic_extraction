@@ -1,7 +1,9 @@
 import re
-from ae.utils import config, get_longest_common_sub_string
+
 from lxml.html import HtmlElement
-from ae.defaults import TITLE_HTAG_XPATH, TITLE_SPLIT_CHAR_PATTERN
+
+from ae.defaults import TITLE_SPLIT_CHAR_PATTERN
+from ae.utils import config, get_longest_common_sub_string
 
 
 class TitleExtract:

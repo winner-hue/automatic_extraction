@@ -1,0 +1,4 @@
+lxml>=4.6.2
+numpy>=1.20.1
+PyYAML>=5.4.1
+dateparser>=0.7.6
